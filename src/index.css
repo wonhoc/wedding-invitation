@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+/* ========================================================
+   1. GowunBatang Font Definitions (한글 및 숫자 폰트)
+   ======================================================== */
+@font-face {
+  font-family: 'GowunBatang';
+  src: url('./assets/fonts/GowunBatang/GowunBatang-Regular.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GowunBatang';
+  src: url('./assets/fonts/GowunBatang/GowunBatang-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GowunBatang';
+  src: url('./assets/fonts/GowunBatang/GowunBatang-Regular.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GowunBatang';
+  src: url('./assets/fonts/GowunBatang/GowunBatang-Bold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GowunBatang';
+  src: url('./assets/fonts/GowunBatang/GowunBatang-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GowunBatang';
+  src: url('./assets/fonts/GowunBatang/GowunBatang-Bold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ========================================================
+   2. Paperlogy Font Definitions (영어 알파벳 전용)
+   - 숫자는 GowunBatang으로 표시되도록 숫자(U+0030-0039)를 제외했습니다.
+   - 영어 알파벳 및 기호만 Paperlogy로 렌더링되고,
+     숫자와 한글은 자연스럽게 GowunBatang으로 렌더링됩니다.
+   ======================================================== */
+@font-face {
+  font-family: 'Paperlogy';
+  src: url('./assets/fonts/Paperlogy/Paperlogy-1Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-002F, U+003A-007E, U+00A0-024F, U+2000-206F, U+20A0-20CF;
+}
+
+@font-face {
+  font-family: 'Paperlogy';
+  src: url('./assets/fonts/Paperlogy/Paperlogy-2ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-002F, U+003A-007E, U+00A0-024F, U+2000-206F, U+20A0-20CF;
+}
+
+@font-face {
+  font-family: 'Paperlogy';
+  src: url('./assets/fonts/Paperlogy/Paperlogy-3Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-002F, U+003A-007E, U+00A0-024F, U+2000-206F, U+20A0-20CF;
+}
+
+@font-face {
+  font-family: 'Paperlogy';
+  src: url('./assets/fonts/Paperlogy/Paperlogy-4Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-002F, U+003A-007E, U+00A0-024F, U+2000-206F, U+20A0-20CF;
+}
+
+@font-face {
+  font-family: 'Paperlogy';
+  src: url('./assets/fonts/Paperlogy/Paperlogy-5Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-002F, U+003A-007E, U+00A0-024F, U+2000-206F, U+20A0-20CF;
+}
+
+@font-face {
+  font-family: 'Paperlogy';
+  src: url('./assets/fonts/Paperlogy/Paperlogy-6SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-002F, U+003A-007E, U+00A0-024F, U+2000-206F, U+20A0-20CF;
+}
+
+@font-face {
+  font-family: 'Paperlogy';
+  src: url('./assets/fonts/Paperlogy/Paperlogy-7Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-002F, U+003A-007E, U+00A0-024F, U+2000-206F, U+20A0-20CF;
+}
+
+@font-face {
+  font-family: 'Paperlogy';
+  src: url('./assets/fonts/Paperlogy/Paperlogy-8ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-002F, U+003A-007E, U+00A0-024F, U+2000-206F, U+20A0-20CF;
+}
+
+@font-face {
+  font-family: 'Paperlogy';
+  src: url('./assets/fonts/Paperlogy/Paperlogy-9Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-002F, U+003A-007E, U+00A0-024F, U+2000-206F, U+20A0-20CF;
+}
+
+/* ========================================================
+   3. Tailwind CSS Theme & Utility Settings
+   ======================================================== */
+@theme {
+  --font-korean: 'Paperlogy', 'GowunBatang', serif;
+  --font-gowun: 'GowunBatang', serif;
+  --font-elegant: 'Paperlogy', 'GowunBatang', serif;
+  --font-paperlogy: 'Paperlogy', sans-serif;
+}
+
+/* Fallback Utility Classes */
+.font-korean {
+  font-family: 'Paperlogy', 'GowunBatang', serif !important;
+}
+
+.font-elegant {
+  font-family: 'Paperlogy', 'GowunBatang', serif !important;
+}
+
+.font-gowun {
+  font-family: 'GowunBatang', serif !important;
+}
+
+.font-paperlogy {
+  font-family: 'Paperlogy', sans-serif !important;
+}
+
+/* Base Body Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Paperlogy', 'GowunBatang', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
