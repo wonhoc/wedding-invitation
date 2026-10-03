@@ -310,7 +310,7 @@ function App() {
             </div>
             <div className="flex items-center justify-center gap-2">
               <span className="text-gray-600 font-light text-right">
-                김응수 · 김정희의 차녀
+                김응수 · 김경희의 차녀
               </span>
               <span className="font-bold text-lg w-16 text-left">김영주</span>
             </div>
@@ -453,7 +453,7 @@ function App() {
                       });
                     }
                   }}
-                  className="snap-center shrink-0 w-[270px] h-[360px] bg-white rounded-3xl overflow-hidden shadow-md border border-gray-100/80 relative transition-transform duration-200 cursor-pointer"
+                  className="snap-center shrink-0 w-[270px] h-[360px] bg-white overflow-hidden shadow-md border border-gray-100/80 relative transition-transform duration-200 cursor-pointer"
                 >
                   <img
                     src={item.image}
@@ -496,7 +496,7 @@ function App() {
             <button
               type="button"
               onClick={handleTmap}
-              className="bg-white border border-gray-200/90 rounded-2xl py-3 px-4 flex items-center justify-center gap-2.5 shadow-xs hover:shadow-md transition-all active:scale-98 cursor-pointer"
+              className="bg-white border border-gray-200/90 py-3 px-4 flex items-center justify-center gap-2.5 shadow-xs hover:shadow-md transition-all active:scale-98 cursor-pointer"
             >
               {/* Tmap Logo Icon */}
               <img
@@ -515,7 +515,7 @@ function App() {
             <button
               type="button"
               onClick={handleKakaoNavi}
-              className="bg-white border border-gray-200/90 rounded-2xl py-3 px-4 flex items-center justify-center gap-2.5 shadow-xs hover:shadow-md transition-all active:scale-98 cursor-pointer"
+              className="bg-white border border-gray-200/90 py-3 px-4 flex items-center justify-center gap-2.5 shadow-xs hover:shadow-md transition-all active:scale-98 cursor-pointer"
             >
               {/* KakaoNavi Logo Icon */}
               <img
@@ -614,7 +614,7 @@ function App() {
               onClick={() =>
                 setFullscreenPhoto({ src: end2, alt: "신랑 최원호" })
               }
-              className="aspect-[3/4] rounded-xl overflow-hidden bg-gray-100 shadow-sm cursor-pointer hover:opacity-95 transition-opacity"
+              className="aspect-[3/4] overflow-hidden bg-gray-100 shadow-sm cursor-pointer hover:opacity-95 transition-opacity"
             >
               <img
                 src={end2}
@@ -626,7 +626,7 @@ function App() {
               onClick={() =>
                 setFullscreenPhoto({ src: end1, alt: "신부 김영주" })
               }
-              className="aspect-[3/4] rounded-xl overflow-hidden bg-gray-100 shadow-sm cursor-pointer hover:opacity-95 transition-opacity"
+              className="aspect-[3/4] overflow-hidden bg-gray-100 shadow-sm cursor-pointer hover:opacity-95 transition-opacity"
             >
               <img
                 src={end1}
@@ -920,7 +920,7 @@ function App() {
             <img
               src={fullscreenPhoto.src}
               alt={fullscreenPhoto.alt || "전체화면 사진"}
-              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl transition-all select-none"
+              className="max-w-full max-h-[90vh] object-contain shadow-2xl transition-all select-none"
             />
           </div>
         </div>
