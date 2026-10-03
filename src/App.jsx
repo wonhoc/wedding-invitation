@@ -155,9 +155,33 @@ function App() {
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
+    // 전체화면 중 모바일 두 손가락 핀치 줌 방지
+    const handleTouchStart = (e) => {
+      if (e.touches && e.touches.length > 1) {
+        e.preventDefault();
+      }
+    };
+
+    // 전체화면 중 iOS Safari 제스처 확대 방지
+    const handleGestureStart = (e) => {
+      e.preventDefault();
+    };
+
+    // 전체화면 중 PC Ctrl + 마우스 휠 확대 방지
+    const handleWheel = (e) => {
+      if (e.ctrlKey) {
+        e.preventDefault();
+      }
+    };
+
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         setFullscreenPhoto(null);
+      } else if (
+        (e.ctrlKey || e.metaKey) &&
+        (e.key === "+" || e.key === "-" || e.key === "=" || e.key === "0")
+      ) {
+        e.preventDefault();
       } else if (fullscreenPhoto.list && fullscreenPhoto.list.length > 1) {
         if (e.key === "ArrowLeft") {
           prevFullscreenPhoto();
@@ -168,9 +192,18 @@ function App() {
     };
 
     window.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("touchstart", handleTouchStart, {
+      passive: false,
+    });
+    document.addEventListener("gesturestart", handleGestureStart);
+    document.addEventListener("wheel", handleWheel, { passive: false });
+
     return () => {
       document.body.style.overflow = originalOverflow;
       window.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("touchstart", handleTouchStart);
+      document.removeEventListener("gesturestart", handleGestureStart);
+      document.removeEventListener("wheel", handleWheel);
     };
   }, [fullscreenPhoto]);
 
@@ -556,7 +589,7 @@ function App() {
                 </li>
                 <li className="flex items-start gap-1.5">
                   <span className="text-gray-400">·</span>
-                  <span>SRT 수서역/고속터미널/남부터미널에서 3호선 환승</span>
+                  <span>KTX 수서역/고속터미널/남부터미널에서 3호선 환승</span>
                 </li>
               </ul>
             </div>
@@ -824,6 +857,7 @@ function App() {
       {fullscreenPhoto && (
         <div
           className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center select-none"
+          style={{ touchAction: "none" }}
           onClick={() => setFullscreenPhoto(null)}
           onTouchStart={handleModalTouchStart}
           onTouchEnd={handleModalTouchEnd}
@@ -915,11 +949,13 @@ function App() {
           {/* 중앙 전체화면 사진 */}
           <div
             className="w-full h-full flex items-center justify-center p-4"
+            style={{ touchAction: "none" }}
             onClick={(e) => e.stopPropagation()}
           >
             <img
               src={fullscreenPhoto.src}
               alt={fullscreenPhoto.alt || "전체화면 사진"}
+              style={{ touchAction: "none" }}
               className="max-w-full max-h-[90vh] object-contain shadow-2xl transition-all select-none"
             />
           </div>
