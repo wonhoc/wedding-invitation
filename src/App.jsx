@@ -191,6 +191,12 @@ function App() {
   };
 
   const handleTmap = () => {
+    const isMobile = /Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent);
+    if (!isMobile) {
+      alert("모바일에서 확인 부탁드립니다.");
+      return;
+    }
+
     const destination = "서울웨딩타워";
     const encoded = encodeURIComponent(destination);
     const isAndroid = /Android/i.test(navigator.userAgent);
@@ -199,7 +205,7 @@ function App() {
       // Android: Tmap 공식 Intent (앱 설치 시 즉시 실행 및 검색, 미설치 시 플레이스토어 이동)
       window.location.href = `intent://search?name=${encoded}#Intent;scheme=tmap;package=com.skt.tmap.ku;end`;
     } else {
-      // iOS 및 PC: Tmap 검색 스키마 호출 (티맵 앱 실행 및 서울웨딩타워 검색)
+      // iOS: Tmap 검색 스키마 호출 (티맵 앱 실행 및 서울웨딩타워 검색)
       const startTime = Date.now();
       window.location.href = `tmap://search?name=${encoded}`;
       setTimeout(() => {
@@ -297,13 +303,13 @@ function App() {
           {/* Parents and Names */}
           <div className="text-[1.05rem] space-y-3 font-medium">
             <div className="flex items-center justify-center gap-2">
-              <span className="text-gray-600 font-light w-32 text-right">
+              <span className="text-gray-600 font-light text-right">
                 최형근 · 한경희의 차남
               </span>
               <span className="font-bold text-lg w-16 text-left">최원호</span>
             </div>
             <div className="flex items-center justify-center gap-2">
-              <span className="text-gray-600 font-light w-32 text-right">
+              <span className="text-gray-600 font-light text-right">
                 김응수 · 김정희의 차녀
               </span>
               <span className="font-bold text-lg w-16 text-left">김영주</span>
