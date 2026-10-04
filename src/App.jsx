@@ -877,7 +877,7 @@ function App() {
               setFullscreenPhoto(null);
             }}
             aria-label="닫기"
-            className="absolute top-5 right-5 z-50 w-11 h-11 rounded-full bg-white/10 hover:bg-white/25 active:bg-white/40 text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md border border-white/20 shadow-lg active:scale-95"
+            className="absolute top-5 right-5 z-50 w-11 h-11 rounded-full hover:bg-white/25 active:bg-white/40 text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md active:scale-95"
           >
             <svg
               width="24"
