@@ -334,7 +334,7 @@ function App() {
           <div className="w-6 h-[1px] bg-[#f54231] my-10"></div>
 
           {/* Parents and Names */}
-          <div className="text-[1.05rem] space-y-3 font-medium">
+          <div className="text-[1.05rem] space-y-3 font-medium mb-8">
             <div className="flex items-center justify-center gap-2">
               <span className="text-gray-600 font-light text-right">
                 최형근 · 한경희의 차남
@@ -346,6 +346,34 @@ function App() {
                 김응수 · 김경희의 차녀
               </span>
               <span className="font-bold text-lg w-16 text-left">김영주</span>
+            </div>
+          </div>
+
+          {/* Groom & Bride Couple Photos */}
+          <div className="grid grid-cols-2 gap-3 w-full max-w-[360px] mb-12">
+            <div
+              onClick={() =>
+                setFullscreenPhoto({ src: end2, alt: "신랑 최원호" })
+              }
+              className="aspect-[3/4] overflow-hidden bg-gray-100 cursor-pointer hover:opacity-95 transition-opacity"
+            >
+              <img
+                src={end2}
+                alt="신랑 최원호"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div
+              onClick={() =>
+                setFullscreenPhoto({ src: end1, alt: "신부 김영주" })
+              }
+              className="aspect-[3/4] overflow-hidden bg-gray-100 cursor-pointer hover:opacity-95 transition-opacity"
+            >
+              <img
+                src={end1}
+                alt="신부 김영주"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </section>
@@ -639,34 +667,6 @@ function App() {
               계좌번호를 기재하였습니다.
             </p>
             <p>축복해 주신 마음 오래도록 간직하겠습니다.</p>
-          </div>
-
-          {/* Groom & Bride Couple Photos */}
-          <div className="grid grid-cols-2 gap-3 w-full max-w-[360px] mb-12">
-            <div
-              onClick={() =>
-                setFullscreenPhoto({ src: end2, alt: "신랑 최원호" })
-              }
-              className="aspect-[3/4] overflow-hidden bg-gray-100 cursor-pointer hover:opacity-95 transition-opacity"
-            >
-              <img
-                src={end2}
-                alt="신랑 최원호"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div
-              onClick={() =>
-                setFullscreenPhoto({ src: end1, alt: "신부 김영주" })
-              }
-              className="aspect-[3/4] overflow-hidden bg-gray-100 cursor-pointer hover:opacity-95 transition-opacity"
-            >
-              <img
-                src={end1}
-                alt="신부 김영주"
-                className="w-full h-full object-cover"
-              />
-            </div>
           </div>
 
           {/* Account Numbers */}
