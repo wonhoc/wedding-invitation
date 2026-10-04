@@ -437,13 +437,13 @@ function App() {
 
           {/* Carousel Track Container */}
           <div className="relative w-full overflow-hidden">
-            {/* Left Navigation Arrow Button (Apple Style) */}
+            {/* Left Navigation Arrow Button (Apple Style - PC 전용) */}
             {photos.length > 1 && (
               <button
                 type="button"
                 onClick={prevSlide}
                 aria-label="이전 사진"
-                className="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 hover:bg-white backdrop-blur-md shadow-lg border border-black/5 flex items-center justify-center text-gray-800 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                className="hidden md:flex absolute left-2.5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 hover:bg-white backdrop-blur-md shadow-lg border border-black/5 items-center justify-center text-gray-800 transition-all hover:scale-105 active:scale-95 cursor-pointer"
               >
                 <svg
                   width="20"
@@ -460,13 +460,13 @@ function App() {
               </button>
             )}
 
-            {/* Right Navigation Arrow Button (Apple Style) */}
+            {/* Right Navigation Arrow Button (Apple Style - PC 전용) */}
             {photos.length > 1 && (
               <button
                 type="button"
                 onClick={nextSlide}
                 aria-label="다음 사진"
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 hover:bg-white backdrop-blur-md shadow-lg border border-black/5 flex items-center justify-center text-gray-800 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                className="hidden md:flex absolute right-2.5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 hover:bg-white backdrop-blur-md shadow-lg border border-black/5 items-center justify-center text-gray-800 transition-all hover:scale-105 active:scale-95 cursor-pointer"
               >
                 <svg
                   width="20"
@@ -893,58 +893,6 @@ function App() {
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
           </button>
-
-          {/* 이전 사진 버튼 (갤러리 사진일 때) */}
-          {fullscreenPhoto.list && fullscreenPhoto.list.length > 1 && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                prevFullscreenPhoto();
-              }}
-              aria-label="이전 사진"
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-50 w-11 h-11 rounded-full bg-black/50 hover:bg-black/80 active:scale-95 text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md border border-white/15 shadow-md"
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-            </button>
-          )}
-
-          {/* 다음 사진 버튼 (갤러리 사진일 때) */}
-          {fullscreenPhoto.list && fullscreenPhoto.list.length > 1 && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                nextFullscreenPhoto();
-              }}
-              aria-label="다음 사진"
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-50 w-11 h-11 rounded-full bg-black/50 hover:bg-black/80 active:scale-95 text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md border border-white/15 shadow-md"
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
-          )}
 
           {/* 중앙 전체화면 사진 */}
           <div
