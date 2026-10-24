@@ -149,39 +149,61 @@ function App() {
     }
   };
 
+  // 전체 페이지 확대 및 축소(핀치 줌, 더블 탭 제스처, Ctrl+휠) 방지
   useEffect(() => {
-    if (!fullscreenPhoto) return;
-
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    // 전체화면 중 모바일 두 손가락 핀치 줌 방지
+    // 모바일 두 손가락 터치 핀치 줌 방지
     const handleTouchStart = (e) => {
       if (e.touches && e.touches.length > 1) {
         e.preventDefault();
       }
     };
 
-    // 전체화면 중 iOS Safari 제스처 확대 방지
+    // iOS Safari 제스처 확대/축소 방지
     const handleGestureStart = (e) => {
       e.preventDefault();
     };
 
-    // 전체화면 중 PC Ctrl + 마우스 휠 확대 방지
+    // PC Ctrl + 마우스 휠 확대/축소 방지
     const handleWheel = (e) => {
       if (e.ctrlKey) {
         e.preventDefault();
       }
     };
 
+    // PC Ctrl + (+ / - / 0 / =) 확대/축소 단축키 방지
     const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
-        setFullscreenPhoto(null);
-      } else if (
+      if (
         (e.ctrlKey || e.metaKey) &&
         (e.key === "+" || e.key === "-" || e.key === "=" || e.key === "0")
       ) {
         e.preventDefault();
+      }
+    };
+
+    document.addEventListener("touchstart", handleTouchStart, {
+      passive: false,
+    });
+    document.addEventListener("gesturestart", handleGestureStart);
+    document.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("touchstart", handleTouchStart);
+      document.removeEventListener("gesturestart", handleGestureStart);
+      document.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!fullscreenPhoto) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setFullscreenPhoto(null);
       } else if (fullscreenPhoto.list && fullscreenPhoto.list.length > 1) {
         if (e.key === "ArrowLeft") {
           prevFullscreenPhoto();
@@ -192,18 +214,9 @@ function App() {
     };
 
     window.addEventListener("keydown", handleKeyDown);
-    document.addEventListener("touchstart", handleTouchStart, {
-      passive: false,
-    });
-    document.addEventListener("gesturestart", handleGestureStart);
-    document.addEventListener("wheel", handleWheel, { passive: false });
-
     return () => {
       document.body.style.overflow = originalOverflow;
       window.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("touchstart", handleTouchStart);
-      document.removeEventListener("gesturestart", handleGestureStart);
-      document.removeEventListener("wheel", handleWheel);
     };
   }, [fullscreenPhoto]);
 
